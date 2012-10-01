@@ -1,6 +1,6 @@
 <%= form.text_field :title, :id => (@gallery.new_record?? 'slugify' : nil)%>
 <%= form.text_field :identifier, :id => 'slug' %>
-<%= form.text_area  :description%>
+<%= form.text_area  :description, :class => 'rich_text' %>
 
 <%= form.text_field :full_width %>
 <%= form.text_field :full_height %>

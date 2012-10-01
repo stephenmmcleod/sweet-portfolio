@@ -3,14 +3,14 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
-  
+
   fixtures :all
   include ActionDispatch::TestProcess
-  
+
   def setup
     reset_config
   end
-  
+
   # resetting default configuration
   def reset_config
     ComfyGallery.configure do |config|
@@ -20,7 +20,7 @@ class ActiveSupport::TestCase
       config.form_builder       = 'ComfyGallery::FormBuilder'
     end
   end
-  
+
   # Example usage:
   #   assert_has_errors_on( @record, [:field_1, :field_2] )
   #   assert_has_errors_on( @record, {:field_1 => 'Message1', :field_2 => 'Message 2'} )
@@ -35,5 +35,5 @@ class ActiveSupport::TestCase
       end
     end
   end
-  
+
 end
