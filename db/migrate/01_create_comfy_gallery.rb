@@ -1,9 +1,10 @@
 class CreateComfyGallery < ActiveRecord::Migration
-  def self.up 
+  def self.up
     create_table :gallery_galleries do |t|
       t.string  :title,               :null => false
       t.string  :identifier,          :null => false
       t.text    :description
+      t.text    :short_description
       t.integer :full_width,          :null => false, :default => 640
       t.integer :full_height,         :null => false, :default => 480
       t.boolean :force_ratio_full,    :null => false, :default => false
@@ -13,7 +14,7 @@ class CreateComfyGallery < ActiveRecord::Migration
       t.timestamps
     end
     add_index :gallery_galleries, :identifier, :uniq => true
-    
+
     create_table :gallery_photos do |t|
       t.integer :gallery_id, :null => false
       t.string  :title
@@ -26,7 +27,7 @@ class CreateComfyGallery < ActiveRecord::Migration
     end
     add_index :gallery_photos, [ :gallery_id, :position ]
   end
-  
+
   def self.down
     drop_table :gallery_photos
     drop_table :gallery_galleries
