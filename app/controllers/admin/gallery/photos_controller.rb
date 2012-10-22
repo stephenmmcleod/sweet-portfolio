@@ -5,7 +5,7 @@ class Admin::Gallery::PhotosController < Admin::Gallery::BaseController
   before_filter :build_photo, :only => [:new, :create]
 
   def index
-    @photos = @gallery.photos.order(:position)
+    @photos = @gallery.photos
   end
 
   def new

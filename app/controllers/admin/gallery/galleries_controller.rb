@@ -5,9 +5,9 @@ class Admin::Gallery::GalleriesController < Admin::Gallery::BaseController
 
   def index
     if params[:category].present?
-      @galleries = Gallery::Gallery.for_category(params[:category]).order(:position).all
+      @galleries = Gallery::Gallery.for_category(params[:category]).all
     else
-      @galleries = Gallery::Gallery.order(:position).all
+      @galleries = Gallery::Gallery.all
     end
   end
 

@@ -40,6 +40,9 @@ class Gallery::Photo < ActiveRecord::Base
 
   attr_accessible :gallery, :title, :description, :image
 
+  # -- Scopes ---------------------------------------------------------------
+  default_scope order('gallery_photos.position')
+
   # -- Instance Methods -----------------------------------------------------
   def image_geometry(style = :original)
     @geometry ||= {}

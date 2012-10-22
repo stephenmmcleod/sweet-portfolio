@@ -1,13 +1,31 @@
 require File.expand_path('../../../test_helper', File.dirname(__FILE__))
 
 class Admin::Gallery::GalleriesControllerTest < ActionController::TestCase
-  
+
   def test_get_index
     get :index
     assert_response :success
     assert_template 'index'
   end
-  
+
+  def test_get_index_with_category
+    category = cms_sites(:default).categories.create!(:label => 'Test Category', :categorized_type => 'Cms::Snippet')
+    category.categorizations.create!(:categorized => cms_snippets(:default))
+
+    get :index, :site_id => cms_sites(:default), :category => category.label
+    assert_response :success
+    assert assigns(:snippets)
+    assert_equal 1, assigns(:snippets).count
+    assert assigns(:snippets).first.categories.member? category
+  end
+
+  def test_get_index_with_category_invalid
+    get :index, :site_id => cms_sites(:default), :category => 'invalid'
+    assert_response :success
+    assert assigns(:snippets)
+    assert_equal 0, assigns(:snippets).count
+  end
+
   def test_get_new
     get :new
     assert_response :success
@@ -27,7 +45,8 @@ class Admin::Gallery::GalleriesControllerTest < ActionController::TestCase
     assert_equal 'Gallery created', flash[:notice]
     assert_redirected_to :action => :index
   end
-  
+
+
   def test_creation_failure
     assert_no_difference 'Gallery::Gallery.count' do
       post :create, :gallery => { }
@@ -36,7 +55,7 @@ class Admin::Gallery::GalleriesControllerTest < ActionController::TestCase
     assert_template 'new'
     assert_equal 'Failed to create Gallery', flash[:error]
   end
-  
+
   def test_get_edit
     gallery = gallery_galleries(:default)
     get :edit, :id => gallery
@@ -45,14 +64,14 @@ class Admin::Gallery::GalleriesControllerTest < ActionController::TestCase
     assert assigns(:gallery)
     assert_select "form[action='/admin/gallery/galleries/#{gallery.id}']"
   end
-  
+
   def test_get_edit_failure
     get :edit, :id => 'invalid'
     assert_response :redirect
     assert_redirected_to :action => :index
     assert_equal 'Gallery not found', flash[:error]
   end
-  
+
   def test_update
     gallery = gallery_galleries(:default)
     put :update, :id => gallery, :gallery => {
@@ -83,5 +102,24 @@ class Admin::Gallery::GalleriesControllerTest < ActionController::TestCase
     assert_equal 'Gallery deleted', flash[:notice]
     assert_redirected_to :action => :index
   end
-  
+
+  def test_reorder
+    gallery_one = gallery_galleries(:default)
+    gallery_two = Gallery::Gallery.create!(
+        :title        => 'Test Gallery 2',
+        :identifier   => 'test-gallery2',
+        :description  => 'Test Description'
+      )
+    assert_equal 0, gallery_one.position
+    assert_equal 1, gallery_two.position
+
+    post :reorder, :gallery_gallery => [gallery_two.id, gallery_one.id]
+    assert_response :success
+    gallery_one.reload
+    gallery_two.reload
+
+    assert_equal 1, gallery_one.position
+    assert_equal 0, gallery_two.position
+  end
+
 end

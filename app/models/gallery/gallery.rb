@@ -21,10 +21,13 @@ class Gallery::Gallery < ActiveRecord::Base
     :uniqueness => true,
     :format     => { :with =>  /^\w[a-z0-9_-]*$/i }
 
+  # -- Scopes ---------------------------------------------------------------
+  default_scope order('gallery_galleries.position')
+
 private
 
   def assign_position
-    max = Gallery::Gallery.all.maximum(:position)
+    max = Gallery::Gallery.maximum(:position)
     self.position = max ? max + 1 : 0
   end
 
