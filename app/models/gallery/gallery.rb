@@ -12,10 +12,20 @@ class Gallery::Gallery < ActiveRecord::Base
     :presence => true
   attr_accessible :title, :identifier, :description, :full_width, :full_height, :force_ratio_full, :thumb_width, :thumb_height, :force_ratio_thumb, :short_description
 
+  # -- Callbacks ------------------------------------------------------------
+  before_create :assign_position
+
 
   validates :identifier,
     :presence   => true,
     :uniqueness => true,
     :format     => { :with =>  /^\w[a-z0-9_-]*$/i }
+
+private
+
+  def assign_position
+    max = Gallery::Gallery.all.maximum(:position)
+    self.position = max ? max + 1 : 0
+  end
 
 end

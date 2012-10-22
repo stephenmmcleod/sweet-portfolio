@@ -1,13 +1,13 @@
 class Admin::Gallery::GalleriesController < Admin::Gallery::BaseController
 
-  before_filter :load_gallery,  :except => [:index, :new, :create]
+  before_filter :load_gallery,  :except => [:index, :new, :create, :reorder]
   before_filter :build_gallery, :only   => [:new, :create]
 
   def index
     if params[:category].present?
-      @galleries = Gallery::Gallery.for_category(params[:category]).all
+      @galleries = Gallery::Gallery.for_category(params[:category]).order(:position).all
     else
-      @galleries = Gallery::Gallery.all
+      @galleries = Gallery::Gallery.order(:position).all
     end
   end
 
@@ -49,8 +49,8 @@ class Admin::Gallery::GalleriesController < Admin::Gallery::BaseController
 
   def reorder
     (params[:gallery_gallery] || []).each_with_index do |id, index|
-      if (photo = Gallery::Gallery.find_by_id(id))
-        photo.update_attribute(:position, index)
+      if (gallery = Gallery::Gallery.find_by_id(id))
+        gallery.update_attribute(:position, index)
       end
     end
     render :nothing => true

@@ -13,24 +13,26 @@
     <th> Embed Code </th>
     <th> Actions </th>
   </tr>
-  <% @galleries.each do |gallery| %>
-    <tr>
-      <td class='preview'>
-        <% gallery.photos.limit(1).each do |photo| %>
-          <%= image_tag(photo.image.url(:admin_thumb)) %>
-        <% end %>
-      </td>
-      <td class='main'>
-        <%= link_to gallery.title, admin_gallery_gallery_photos_path(gallery) %>
-      </td>
-      <td class='embed'>
-        {{ cms:helper:render_gallery:<%= gallery.identifier  %> }}
-      </td>
-      <td class='action_links'>
-        <%= link_to 'Show Photos', admin_gallery_gallery_photos_path(gallery) %>
-        <%= link_to 'Edit', edit_admin_gallery_gallery_path(gallery) %>
-        <%= link_to 'Delete', admin_gallery_gallery_path(gallery), :method => :delete, :confirm => 'Are you sure?' %>
-      </td>
-    </tr>
-  <% end %>
+  <tbody class='sortable'>
+    <% @galleries.each do |gallery| %>
+      <tr id='<%= dom_id(gallery) %>'>
+        <td class='preview'>
+          <% gallery.photos.limit(1).each do |photo| %>
+            <%= image_tag(photo.image.url(:admin_thumb), :class => 'thumb dragger') %>
+          <% end %>
+        </td>
+        <td class='main'>
+          <%= link_to gallery.title, admin_gallery_gallery_photos_path(gallery) %>
+        </td>
+        <td class='embed'>
+          {{ cms:helper:render_gallery:<%= gallery.identifier  %> }}
+        </td>
+        <td class='action_links'>
+          <%= link_to 'Show Photos', admin_gallery_gallery_photos_path(gallery) %>
+          <%= link_to 'Edit', edit_admin_gallery_gallery_path(gallery) %>
+          <%= link_to 'Delete', admin_gallery_gallery_path(gallery), :method => :delete, :confirm => 'Are you sure?' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
