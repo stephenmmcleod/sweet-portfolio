@@ -11,6 +11,7 @@ class CreateComfyGallery < ActiveRecord::Migration
       t.integer :thumb_width,         :null => false, :default => 150
       t.integer :thumb_height,        :null => false, :default => 150
       t.boolean :force_ratio_thumb,   :null => false, :default => true
+      t.integer :position,            :null => false, :default => 0
       t.timestamps
     end
     add_index :gallery_galleries, :identifier, :uniq => true
