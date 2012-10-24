@@ -38,7 +38,7 @@ class Gallery::Photo < ActiveRecord::Base
   validates_attachment_size :image,
     :less_than    => 5.megabytes
 
-  attr_accessible :gallery, :title, :description, :image
+  attr_accessible :gallery, :title, :description, :image, :embed_code
 
   # -- Scopes ---------------------------------------------------------------
   default_scope order('gallery_photos.position')
@@ -63,6 +63,10 @@ class Gallery::Photo < ActiveRecord::Base
 
   def cropping_full?
     !full_crop_x.blank? && !full_crop_y.blank? && !full_crop_w.blank? && !full_crop_h.blank?
+  end
+
+  def has_media?
+    self.embed_code.present?
   end
 
 private

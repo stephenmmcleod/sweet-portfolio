@@ -20,6 +20,7 @@ class CreateComfyGallery < ActiveRecord::Migration
       t.integer :gallery_id, :null => false
       t.string  :title
       t.text    :description
+      t.string  :embed_code
       t.string  :image_file_name
       t.string  :image_content_type
       t.integer :image_file_size

@@ -27,7 +27,7 @@ class Gallery::Gallery < ActiveRecord::Base
 private
 
   def assign_position
-    max = Gallery::Gallery.maximum(:position)
+    max = Gallery::Gallery.maximum(:position).to_i
     self.position = max ? max + 1 : 0
   end
 
