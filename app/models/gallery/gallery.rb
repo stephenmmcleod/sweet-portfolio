@@ -12,14 +12,13 @@ class Gallery::Gallery < ActiveRecord::Base
     :presence => true
   attr_accessible :title, :identifier, :description, :full_width, :full_height, :force_ratio_full, :thumb_width, :thumb_height, :force_ratio_thumb, :short_description, :category_ids
 
-  # -- Callbacks ------------------------------------------------------------
-  before_create :assign_position
-
-
   validates :identifier,
     :presence   => true,
     :uniqueness => true,
     :format     => { :with =>  /^\w[a-z0-9_-]*$/i }
+
+  # -- Callbacks ------------------------------------------------------------
+  before_create :assign_position
 
   # -- Scopes ---------------------------------------------------------------
   default_scope order('gallery_galleries.position')

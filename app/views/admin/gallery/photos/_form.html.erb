@@ -7,6 +7,7 @@
   <% end %>
 <% end %>
 <%= form.file_field :image, :multiple => true %>
-<%= form.text_area :description, :class => 'short' %>
+<%= form.text_area :description, :class => 'rich_text' %>
+<%= form.text_area :embed_code, :class => 'short' %>
 
 <%= form.submit 'Save' %>
