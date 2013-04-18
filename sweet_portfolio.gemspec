@@ -4,8 +4,8 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "sweet-portfolio"
-  s.version = "0.1.3"
+  s.name = "sweet_portfolio"
+  s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen McLeod", "The Working Group Inc."]
@@ -26,16 +26,16 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "app/assets/images/comfy_gallery/blank.gif",
-    "app/assets/images/comfy_gallery/border.png",
-    "app/assets/images/comfy_gallery/controls.png",
-    "app/assets/images/comfy_gallery/fancybox_loading.gif",
-    "app/assets/images/comfy_gallery/fancybox_overlay.png",
-    "app/assets/images/comfy_gallery/fancybox_sprite.png",
-    "app/assets/images/comfy_gallery/jcrop.gif",
-    "app/assets/images/comfy_gallery/loading.gif",
-    "app/assets/images/comfy_gallery/loading_background.png",
-    "app/assets/images/comfy_gallery/overlay.png",
+    "app/assets/images/sweet-portfolio/blank.gif",
+    "app/assets/images/sweet-portfolio/border.png",
+    "app/assets/images/sweet-portfolio/controls.png",
+    "app/assets/images/sweet-portfolio/fancybox_loading.gif",
+    "app/assets/images/sweet-portfolio/fancybox_overlay.png",
+    "app/assets/images/sweet-portfolio/fancybox_sprite.png",
+    "app/assets/images/sweet-portfolio/jcrop.gif",
+    "app/assets/images/sweet-portfolio/loading.gif",
+    "app/assets/images/sweet-portfolio/loading_background.png",
+    "app/assets/images/sweet-portfolio/overlay.png",
     "app/assets/javascripts/comfy_gallery/jquery.colorbox.js",
     "app/assets/javascripts/comfy_gallery/jquery.fancybox-media.js",
     "app/assets/javascripts/comfy_gallery/jquery.fancybox-thumbs.js",
