@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "sweet_portfolio"
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen McLeod", "The Working Group Inc."]
   s.date = "2013-04-18"
-  s.description = "Sweet-Portfolio is an image gallery engine with nice frontend capabilities for Rails 3.1 apps (and ComfortableMexicanSofa)"
+  s.description = "Sweet Portfolio is an image gallery engine with nice frontend capabilities for Rails 3.1 apps (and ComfortableMexicanSofa)"
   s.email = "work@stephenmmcleod.com"
   s.extra_rdoc_files = [
     "LICENSE",
@@ -26,16 +26,16 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "app/assets/images/sweet-portfolio/blank.gif",
-    "app/assets/images/sweet-portfolio/border.png",
-    "app/assets/images/sweet-portfolio/controls.png",
-    "app/assets/images/sweet-portfolio/fancybox_loading.gif",
-    "app/assets/images/sweet-portfolio/fancybox_overlay.png",
-    "app/assets/images/sweet-portfolio/fancybox_sprite.png",
-    "app/assets/images/sweet-portfolio/jcrop.gif",
-    "app/assets/images/sweet-portfolio/loading.gif",
-    "app/assets/images/sweet-portfolio/loading_background.png",
-    "app/assets/images/sweet-portfolio/overlay.png",
+    "app/assets/images/sweet_portfolio/blank.gif",
+    "app/assets/images/sweet_portfolio/border.png",
+    "app/assets/images/sweet_portfolio/controls.png",
+    "app/assets/images/sweet_portfolio/fancybox_loading.gif",
+    "app/assets/images/sweet_portfolio/fancybox_overlay.png",
+    "app/assets/images/sweet_portfolio/fancybox_sprite.png",
+    "app/assets/images/sweet_portfolio/jcrop.gif",
+    "app/assets/images/sweet_portfolio/loading.gif",
+    "app/assets/images/sweet_portfolio/loading_background.png",
+    "app/assets/images/sweet_portfolio/overlay.png",
     "app/assets/javascripts/sweet_portfolio/jquery.colorbox.js",
     "app/assets/javascripts/sweet_portfolio/jquery.fancybox-media.js",
     "app/assets/javascripts/sweet_portfolio/jquery.fancybox-thumbs.js",
@@ -71,21 +71,21 @@ Gem::Specification.new do |s|
     "config/environments/development.rb",
     "config/environments/production.rb",
     "config/environments/test.rb",
-    "config/initializers/sweet_portfolio.rb",
     "config/initializers/paperclip.rb",
+    "config/initializers/sweet_portfolio.rb",
     "config/routes.rb",
     "db/migrate/01_create_sweet_portfolio.rb",
+    "lib/generators/sweet_portfolio/README",
+    "lib/generators/sweet_portfolio/sweet_portfolio.rb",
+    "lib/paperclip_processors/cropper.rb",
     "lib/sweet_portfolio.rb",
     "lib/sweet_portfolio/configuration.rb",
     "lib/sweet_portfolio/engine.rb",
     "lib/sweet_portfolio/form_builder.rb",
     "lib/sweet_portfolio/routing.rb",
-    "lib/generators/comfy/gallery/README",
-    "lib/generators/comfy/gallery/gallery_generator.rb",
-    "lib/paperclip_processors/cropper.rb",
     "lib/tasks/sweet_portfolio.rake",
     "script/rails",
-    "sweet-portfolio.gemspec",
+    "sweet_portfolio.gemspec",
     "test/fixtures/files/default.jpg",
     "test/fixtures/files/default.txt",
     "test/fixtures/files/default2.jpg",
