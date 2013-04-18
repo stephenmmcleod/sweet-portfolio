@@ -1,4 +1,4 @@
-class CreateComfyGallery < ActiveRecord::Migration
+class CreateSweetPortfolio < ActiveRecord::Migration
   def self.up
     create_table :gallery_galleries do |t|
       t.string  :title,               :null => false

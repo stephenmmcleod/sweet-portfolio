@@ -13,11 +13,11 @@ class ActiveSupport::TestCase
 
   # resetting default configuration
   def reset_config
-    ComfyGallery.configure do |config|
+    SweetPortfolio.configure do |config|
       config.admin_route_prefix = 'admin'
       config.upload_options     = { }
       config.admin_controller   = 'ApplicationController'
-      config.form_builder       = 'ComfyGallery::FormBuilder'
+      config.form_builder       = 'SweetPortfolio::FormBuilder'
     end
   end
 

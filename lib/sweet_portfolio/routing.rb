@@ -47,7 +47,7 @@ module ComfyBlog::Routing
     end
   end
 
-  namespace :admin, :path => ComfyGallery.config.admin_route_prefix do
+  namespace :admin, :path => SweetPortfolio.config.admin_route_prefix do
     namespace :gallery do
       resources :galleries do
         put :reorder, :on => :collection
@@ -57,6 +57,6 @@ module ComfyBlog::Routing
         end
       end
     end
-  end unless ComfyGallery.config.admin_route_prefix.blank?
+  end unless SweetPortfolio.config.admin_route_prefix.blank?
   
 end

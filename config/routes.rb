@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin, :path => ComfyGallery.config.admin_route_prefix do
+  namespace :admin, :path => SweetPortfolio.config.admin_route_prefix do
     namespace :gallery do
       resources :galleries do
         put :reorder, :on => :collection
@@ -10,5 +10,5 @@ Rails.application.routes.draw do
         end
       end
     end
-  end unless ComfyGallery.config.admin_route_prefix.blank?
+  end unless SweetPortfolio.config.admin_route_prefix.blank?
 end

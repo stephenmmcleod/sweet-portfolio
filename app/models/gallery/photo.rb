@@ -2,7 +2,7 @@ class Gallery::Photo < ActiveRecord::Base
 
   self.table_name = :gallery_photos
 
-  upload_options = (ComfyGallery.config.upload_options || {}).merge(
+  upload_options = (SweetPortfolio.config.upload_options || {}).merge(
     :styles => lambda { |image|
       g = image.instance.gallery
       f_settings = "#{g.full_width}x#{g.full_height}#{g.force_ratio_full?? '#' : '>'}"

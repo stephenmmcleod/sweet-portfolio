@@ -1,6 +1,6 @@
 <% content_for :head do %>
-  <%= stylesheet_link_tag 'comfy_gallery/jquery.jcrop.css' %>
-  <%= javascript_include_tag 'comfy_gallery/jquery.jcrop.js' %>
+  <%= stylesheet_link_tag 'sweet_portfolio/jquery.jcrop.css' %>
+  <%= javascript_include_tag 'sweet_portfolio/jquery.jcrop.js' %>
   <script type="text/javascript" charset="utf-8">
     $(function(){
       $('#crop_full').Jcrop({
@@ -37,7 +37,7 @@
 
 <h1> Crop Photo </h1>
 
-<%= comfy_gallery_form_for @photo, :as => :photo, :url => { :action => :update } do |form| %>
+<%= sweet_portfolio_form_for @photo, :as => :photo, :url => { :action => :update } do |form| %>
 
   <% if @photo.gallery.force_ratio_full? %>
     <%= form.simple_field 'Full Size' do %>

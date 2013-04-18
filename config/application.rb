@@ -6,10 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module ComfyGallery
+module SweetPortfolio
   class Application < Rails::Application
     
-    require 'comfy_gallery'
+    require 'sweet_portfolio'
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -44,7 +44,7 @@ module ComfyGallery
     # Enable the asset pipeline
     config.assets.enabled = true
     
-    config.session_store :cookie_store, :key => '_comfy_blog_session'
+    config.session_store :cookie_store, :key => '_sweet_portfolio_session'
     config.secret_token = 'e0fef4ab56c1cace8845864fe2cb2a27f5caad72521419f87b2774785187090a654b83229bf9cef70ce475a83bfa561dbbaa2015788181ea837c456964c1e0f6'
     
   end

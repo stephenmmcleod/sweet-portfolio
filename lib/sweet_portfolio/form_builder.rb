@@ -1,4 +1,4 @@
-class ComfyGallery::FormBuilder < ActionView::Helpers::FormBuilder
+class SweetPortfolio::FormBuilder < ActionView::Helpers::FormBuilder
   
   helpers = field_helpers -
     %w(hidden_field fields_for) +

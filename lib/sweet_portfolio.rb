@@ -1,13 +1,13 @@
 # Loading engine only if this is not a standalone installation
-unless defined? ComfyGallery::Application
-  require File.expand_path('comfy_gallery/engine', File.dirname(__FILE__))
+unless defined? SweetPortfolio::Application
+  require File.expand_path('sweet_portfolio/engine', File.dirname(__FILE__))
 end
 
-require File.expand_path('comfy_gallery/configuration', File.dirname(__FILE__))
-require File.expand_path('comfy_gallery/form_builder', File.dirname(__FILE__))
+require File.expand_path('sweet_portfolio/configuration', File.dirname(__FILE__))
+require File.expand_path('sweet_portfolio/form_builder', File.dirname(__FILE__))
 require File.expand_path('paperclip_processors/cropper', File.dirname(__FILE__))
 
-module ComfyGallery
+module SweetPortfolio
   class << self
     
     def configure

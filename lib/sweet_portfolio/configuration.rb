@@ -1,4 +1,4 @@
-module ComfyGallery
+module SweetPortfolio
   class Configuration
     
     # Paperclip upload settings for photos
@@ -19,7 +19,7 @@ module ComfyGallery
       @upload_options     = { }
       @admin_route_prefix = 'admin'
       @admin_controller   = 'ApplicationController'
-      @form_builder       = 'ComfyGallery::FormBuilder'
+      @form_builder       = 'SweetPortfolio::FormBuilder'
     end
     
   end
