@@ -7,13 +7,13 @@ ComfyGallery::Application.load_tasks
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name        = 'comfy_gallery'
-    gem.homepage    = 'http://github.com/comfy/comfy-gallery'
+    gem.name        = 'sweet-portfolio'
+    gem.homepage    = 'git@github.com:stephenmmcleod/sweet-portfolio.git'
     gem.license     = 'MIT'
-    gem.summary     = 'ComfyGallery is an image gallery engine for Rails 3.1 apps (and ComfortableMexicanSofa)'
-    gem.description = ''
-    gem.email       = 'oleg@twg.ca'
-    gem.authors     = ['Oleg Khabarov', 'Stephen McLeod', 'The Working Group Inc.']
+    gem.summary     = ''
+    gem.description = 'Sweet-Portfolio is an image gallery engine with nice frontend capabilities for Rails 3.1 apps (and ComfortableMexicanSofa)'
+    gem.email       = 'work@stephenmmcleod.com'
+    gem.authors     = ['Stephen McLeod', 'The Working Group Inc.']
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
