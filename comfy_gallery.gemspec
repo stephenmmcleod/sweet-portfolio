@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Oleg Khabarov", "Stephen McLeod", "The Working Group Inc."]
-  s.date = "2012-02-22"
+  s.date = "2013-04-18"
   s.description = ""
   s.email = "oleg@twg.ca"
   s.extra_rdoc_files = [
@@ -18,21 +18,32 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    ".powrc",
+    ".ruby-version",
     ".travis.yml",
     "Gemfile",
     "LICENSE",
     "README.md",
     "Rakefile",
     "VERSION",
+    "app/assets/images/comfy_gallery/blank.gif",
     "app/assets/images/comfy_gallery/border.png",
     "app/assets/images/comfy_gallery/controls.png",
+    "app/assets/images/comfy_gallery/fancybox_loading.gif",
+    "app/assets/images/comfy_gallery/fancybox_overlay.png",
+    "app/assets/images/comfy_gallery/fancybox_sprite.png",
     "app/assets/images/comfy_gallery/jcrop.gif",
     "app/assets/images/comfy_gallery/loading.gif",
     "app/assets/images/comfy_gallery/loading_background.png",
     "app/assets/images/comfy_gallery/overlay.png",
     "app/assets/javascripts/comfy_gallery/jquery.colorbox.js",
+    "app/assets/javascripts/comfy_gallery/jquery.fancybox-media.js",
+    "app/assets/javascripts/comfy_gallery/jquery.fancybox-thumbs.js",
+    "app/assets/javascripts/comfy_gallery/jquery.fancybox.pack.js",
     "app/assets/javascripts/comfy_gallery/jquery.jcrop.js",
     "app/assets/stylesheets/comfy_gallery/colorbox.css",
+    "app/assets/stylesheets/comfy_gallery/jquery.fancybox-thumbs.css",
+    "app/assets/stylesheets/comfy_gallery/jquery.fancybox.css",
     "app/assets/stylesheets/comfy_gallery/jquery.jcrop.css",
     "app/controllers/admin/gallery/base_controller.rb",
     "app/controllers/admin/gallery/galleries_controller.rb",
@@ -69,6 +80,7 @@ Gem::Specification.new do |s|
     "lib/comfy_gallery/configuration.rb",
     "lib/comfy_gallery/engine.rb",
     "lib/comfy_gallery/form_builder.rb",
+    "lib/comfy_gallery/routing.rb",
     "lib/generators/comfy/gallery/README",
     "lib/generators/comfy/gallery/gallery_generator.rb",
     "lib/paperclip_processors/cropper.rb",
@@ -90,7 +102,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/comfy/comfy-gallery"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.24"
   s.summary = "ComfyGallery is an image gallery engine for Rails 3.1 apps (and ComfortableMexicanSofa)"
 
   if s.respond_to? :specification_version then
