@@ -98,7 +98,7 @@ Gem::Specification.new do |s|
     "test/unit/gallery_test.rb",
     "test/unit/photo_test.rb"
   ]
-  s.homepage = "https://git@github.com:stephenmmcleod/sweet-portfolio.git"
+  s.homepage = "https://github.com/stephenmmcleod/sweet-portfolio"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
