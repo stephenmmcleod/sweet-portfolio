@@ -3,9 +3,14 @@ unless defined? SweetPortfolio::Application
   require File.expand_path('sweet_portfolio/engine', File.dirname(__FILE__))
 end
 
-require File.expand_path('sweet_portfolio/configuration', File.dirname(__FILE__))
-require File.expand_path('sweet_portfolio/form_builder', File.dirname(__FILE__))
-require File.expand_path('paperclip_processors/cropper', File.dirname(__FILE__))
+[ 'sweet_portfolio/configuration',
+  'sweet_portfolio/form_builder',
+  'paperclip_processors/cropper',
+  'sweet_portfolio/routing',
+].each do |path|
+  require File.expand_path(path, File.dirname(__FILE__))
+end
+
 
 module SweetPortfolio
   class << self

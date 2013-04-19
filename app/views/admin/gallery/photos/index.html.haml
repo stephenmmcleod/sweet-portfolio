@@ -1,0 +1,19 @@
+.page-header
+  = link_to 'Add new photo', new_admin_gallery_gallery_photo_path(@gallery), :class => 'btn pull-right'
+  %h2
+    Photos in #{@gallery.title}
+
+%table.table.table-hover.table-bordered
+  %tbody.sortable
+    - @photos.each do |photo|
+      %tr{:id => dom_id(photo)}
+        %td
+          .dragger{:style => "cursor: move;"}
+            = image_tag(photo.image.url(:admin_thumb))
+        %td.main
+          .title= photo.title
+        %td
+          .btn-group
+            = link_to 'Crop', crop_admin_gallery_gallery_photo_path(@gallery, photo), :class => 'btn btn-small' if photo.force_aspect?
+            = link_to 'Edit', edit_admin_gallery_gallery_photo_path(@gallery, photo), :class => 'btn btn-small'
+            = link_to 'Delete', admin_gallery_gallery_photo_path(@gallery, photo), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-small btn-danger'

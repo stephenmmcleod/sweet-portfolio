@@ -1,0 +1,15 @@
+
+= form.text_field :title, :data => {:slugify => @gallery.new_record?}
+= form.text_field :identifier, :data => {:slug => true}
+= form.text_area  :description, :"data-rich-text" => "true"
+= form.text_area  :short_description, :"data-rich-text" => "true"
+= form.text_field :full_width
+= form.text_field :full_height
+= form.check_box :force_ratio_full, :label => "Force Ratio"
+= form.text_field :thumb_width
+= form.text_field :thumb_height
+= form.check_box :force_ratio_thumb, :label => "Force Ratio"
+= render :partial => 'cms_admin/categories/form', :object => form if defined?(ComfortableMexicanSofa)
+
+.form-actions
+  = form.submit @gallery.new_record?? 'Create post' : 'Update post', :class => 'btn btn-primary'

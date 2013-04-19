@@ -1,0 +1,28 @@
+
+
+.page-header
+  = link_to 'Add new gallery', new_admin_gallery_gallery_path, :class => 'btn pull-right'
+  %h2 Galleries
+
+= render :partial => 'cms_admin/categories/index', :object => 'Gallery::Gallery' if defined?(ComfortableMexicanSofa)
+
+%br/
+%table.table.table-hover.table-bordered
+  %tr
+    %th Preview
+    %th Name
+    %th Actions
+  %tbody.sortable
+    - @galleries.each do |gallery|
+      %tr{:id => dom_id(gallery)}
+        %td
+          .dragger{:style => "cursor: move;"}
+            - gallery.photos.limit(1).each do |photo|
+              = image_tag(photo.image.url(:admin_thumb))
+        %td.main
+          = link_to gallery.title, admin_gallery_gallery_photos_path(gallery)
+        %td
+          .btn-group
+            = link_to 'Show Photos', admin_gallery_gallery_photos_path(gallery), :class => 'btn btn-small'
+            = link_to 'Edit', edit_admin_gallery_gallery_path(gallery), :class => 'btn btn-small'
+            = link_to 'Delete', admin_gallery_gallery_path(gallery), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-small btn-danger'
