@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen McLeod", "The Working Group Inc."]
-  s.date = "2013-04-18"
+  s.date = "2013-04-19"
   s.description = "Sweet Portfolio is an image gallery engine with nice frontend capabilities for Rails 3.1 apps (and ComfortableMexicanSofa)"
   s.email = "work@stephenmmcleod.com"
   s.extra_rdoc_files = [
@@ -53,16 +53,16 @@ Gem::Specification.new do |s|
     "app/models/gallery/gallery.rb",
     "app/models/gallery/photo.rb",
     "app/views/admin/gallery/_navigation.html.erb",
-    "app/views/admin/gallery/galleries/_form.html.erb",
-    "app/views/admin/gallery/galleries/edit.html.erb",
-    "app/views/admin/gallery/galleries/index.html.erb",
-    "app/views/admin/gallery/galleries/new.html.erb",
-    "app/views/admin/gallery/photos/_form.html.erb",
-    "app/views/admin/gallery/photos/crop.html.erb",
-    "app/views/admin/gallery/photos/edit.html.erb",
-    "app/views/admin/gallery/photos/index.html.erb",
-    "app/views/admin/gallery/photos/new.html.erb",
-    "app/views/layouts/gallery/application.html.erb",
+    "app/views/admin/gallery/galleries/_form.html.haml",
+    "app/views/admin/gallery/galleries/edit.html.haml",
+    "app/views/admin/gallery/galleries/index.html.haml",
+    "app/views/admin/gallery/galleries/new.html.haml",
+    "app/views/admin/gallery/photos/_form.html.haml",
+    "app/views/admin/gallery/photos/crop.html.haml",
+    "app/views/admin/gallery/photos/edit.html.haml",
+    "app/views/admin/gallery/photos/index.html.haml",
+    "app/views/admin/gallery/photos/new.html.haml",
+    "app/views/layouts/gallery/application.html.haml",
     "config.ru",
     "config/application.rb",
     "config/boot.rb",
@@ -111,12 +111,14 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rails>, [">= 3.1.0"])
       s.add_runtime_dependency(%q<paperclip>, [">= 2.3.0"])
       s.add_runtime_dependency(%q<jquery-rails>, [">= 1.0.14"])
+      s.add_runtime_dependency(%q<haml>, ["~> 4.0.1"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
       s.add_dependency(%q<rails>, [">= 3.1.0"])
       s.add_dependency(%q<paperclip>, [">= 2.3.0"])
       s.add_dependency(%q<jquery-rails>, [">= 1.0.14"])
+      s.add_dependency(%q<haml>, ["~> 4.0.1"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
     end
@@ -124,6 +126,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rails>, [">= 3.1.0"])
     s.add_dependency(%q<paperclip>, [">= 2.3.0"])
     s.add_dependency(%q<jquery-rails>, [">= 1.0.14"])
+    s.add_dependency(%q<haml>, ["~> 4.0.1"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
   end
