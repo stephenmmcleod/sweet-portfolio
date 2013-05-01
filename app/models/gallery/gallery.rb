@@ -23,6 +23,15 @@ class Gallery::Gallery < ActiveRecord::Base
   # -- Scopes ---------------------------------------------------------------
   default_scope order('gallery_galleries.position')
 
+  # -- Instance Methods -----------------------------------------------------
+  def next (category)
+    Gallery::Gallery.unscoped.order("ends_on ASC").for_category(category).where("ends_on > ?", ends_on).first
+  end
+
+  def previous (category)
+    Gallery::Gallery.unscoped.order("ends_on DESC").for_category(category).where("ends_on < ?", ends_on).first
+  end
+
 private
 
   def assign_position
