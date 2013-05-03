@@ -36,7 +36,6 @@ Gem::Specification.new do |s|
     "app/assets/images/sweet_portfolio/loading.gif",
     "app/assets/images/sweet_portfolio/loading_background.png",
     "app/assets/images/sweet_portfolio/overlay.png",
-    "app/assets/javascripts/sweet_portfolio/Jcrop.gif",
     "app/assets/javascripts/sweet_portfolio/jquery.colorbox.js",
     "app/assets/javascripts/sweet_portfolio/jquery.fancybox-media.js",
     "app/assets/javascripts/sweet_portfolio/jquery.fancybox-thumbs.js",
