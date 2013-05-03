@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen McLeod", "The Working Group Inc."]
-  s.date = "2013-04-19"
+  s.date = "2013-05-03"
   s.description = "Sweet Portfolio is an image gallery engine with nice frontend capabilities for Rails 3.1 apps (and ComfortableMexicanSofa)"
   s.email = "work@stephenmmcleod.com"
   s.extra_rdoc_files = [
@@ -36,11 +36,13 @@ Gem::Specification.new do |s|
     "app/assets/images/sweet_portfolio/loading.gif",
     "app/assets/images/sweet_portfolio/loading_background.png",
     "app/assets/images/sweet_portfolio/overlay.png",
+    "app/assets/javascripts/sweet_portfolio/Jcrop.gif",
     "app/assets/javascripts/sweet_portfolio/jquery.colorbox.js",
     "app/assets/javascripts/sweet_portfolio/jquery.fancybox-media.js",
     "app/assets/javascripts/sweet_portfolio/jquery.fancybox-thumbs.js",
     "app/assets/javascripts/sweet_portfolio/jquery.fancybox.pack.js",
     "app/assets/javascripts/sweet_portfolio/jquery.jcrop.js",
+    "app/assets/javascripts/sweet_portfolio/jquery.jcrop.min.js",
     "app/assets/stylesheets/sweet_portfolio/colorbox.css",
     "app/assets/stylesheets/sweet_portfolio/jquery.fancybox-thumbs.css",
     "app/assets/stylesheets/sweet_portfolio/jquery.fancybox.css",
