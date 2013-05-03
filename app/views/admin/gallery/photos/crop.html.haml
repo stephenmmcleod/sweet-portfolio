@@ -1,36 +1,52 @@
 - content_for :head do
   = stylesheet_link_tag 'sweet_portfolio/jquery.jcrop.css'
-  = javascript_include_tag 'sweet_portfolio/jquery.jcrop.js'
-  %script{:charset => "utf-8", :type => "text/javascript"}
+  = javascript_include_tag 'sweet_portfolio/jquery.Jcrop.js'
+
+  
+  :javascript
+    var gallery_width = #{@gallery.thumb_width};
+    var gallery_height = #{@gallery.thumb_height};
     $(function(){
-    $('#crop_full').Jcrop({
-    onChange: update_full_crop,
-    onSelect: update_full_crop,
-    aspectRatio: <haml:loud> @photo.gallery.force_ratio_full?? (@photo.gallery.full_width.to_f / @photo.gallery.full_height) : 'null' </haml:loud>
+      $('#crop_full').Jcrop({
+        onChange: update_full_crop,
+        onSelect: update_full_crop,
+        aspectRatio: #{@photo.gallery.force_ratio_full? ? (@photo.gallery.full_width.to_f / @photo.gallery.full_height) : 'null'}  
+      });
+      $('#crop_thumb').Jcrop({
+        onChange: update_thumb_crop,
+        onSelect: update_thumb_crop,
+        aspectRatio: #{@photo.gallery.force_ratio_thumb?? (@photo.gallery.thumb_width.to_f / @photo.gallery.thumb_height) : 'null'}
+      });
     });
-    
-    $('#crop_thumb').Jcrop({
-    onChange: update_thumb_crop,
-    onSelect: update_thumb_crop,
-    aspectRatio: <haml:loud> @photo.gallery.force_ratio_thumb?? (@photo.gallery.thumb_width.to_f / @photo.gallery.thumb_height) : 'null' </haml:loud>
-    });
-    });
-    
-    
     function update_full_crop(coords) {
-    var ratio = <haml:loud> @photo.image_geometry(:original).width </haml:loud> / <haml:loud> @photo.image_geometry(:admin_full).width </haml:loud>;
-    $('#full_crop_x').val(coords.x * ratio);
-    $('#full_crop_y').val(coords.y * ratio);
-    $('#full_crop_w').val(coords.w * ratio);
-    $('#full_crop_h').val(coords.h * ratio);
+      var rx = gallery_width / coords.w;
+      var ry = gallery_height / coords.h;
+      $('#full_preview').css({
+        width: Math.round(rx * #{@photo.image_geometry(:admin_full).width}) + 'px',
+        height: Math.round(ry * #{@photo.image_geometry(:admin_full).height}) + 'px',
+        marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+        marginTop: '-' + Math.round(ry * coords.y) + 'px'
+      });
+      var ratio = #{@photo.image_geometry(:original).width / @photo.image_geometry(:admin_full).width};
+      $('#full_crop_x').val(coords.x * ratio);
+      $('#full_crop_y').val(coords.y * ratio);
+      $('#full_crop_w').val(coords.w * ratio);
+      $('#full_crop_h').val(coords.h * ratio);
     }
-    
     function update_thumb_crop(coords) {
-    var ratio = <haml:loud> @photo.image_geometry(:original).width </haml:loud> / <haml:loud> @photo.image_geometry(:admin_full).width </haml:loud>;
-    $('#thumb_crop_x').val(coords.x * ratio);
-    $('#thumb_crop_y').val(coords.y * ratio);
-    $('#thumb_crop_w').val(coords.w * ratio);
-    $('#thumb_crop_h').val(coords.h * ratio);
+      var rx = gallery_width / coords.w;
+      var ry = gallery_height / coords.h;
+      $('#thumb_preview').css({
+        width: Math.round(rx * #{@photo.image_geometry(:admin_full).width}) + 'px',
+        height: Math.round(ry * #{@photo.image_geometry(:admin_full).height}) + 'px',
+        marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+        marginTop: '-' + Math.round(ry * coords.y) + 'px'
+      });
+      var ratio = #{@photo.image_geometry(:original).width / @photo.image_geometry(:admin_full).width};
+      $('#thumb_crop_x').val(coords.x * ratio);
+      $('#thumb_crop_y').val(coords.y * ratio);
+      $('#thumb_crop_w').val(coords.w * ratio);
+      $('#thumb_crop_h').val(coords.h * ratio);
     }
 
 %h1 Crop Photo
@@ -38,12 +54,17 @@
   - if @photo.gallery.force_ratio_full?
     = form.element 'Full Size' do
       = image_tag @photo.image.url(:admin_full), :id => 'crop_full'
+      .div{:style => "width:#{@gallery.thumb_width}px;height:#{@gallery.thumb_height}px;overflow:hidden;margin-left:5px;"}
+        = image_tag @photo.image.url(:admin_full), :id => 'full_preview', :style => "max-width: none;"
+    - [:full_crop_x, :full_crop_y, :full_crop_w, :full_crop_h].each do |attr|
+      = form.hidden_field attr, :id => attr
   %br/
   - if @photo.gallery.force_ratio_thumb?
     = form.element 'Thumbnail' do
       = image_tag @photo.image.url(:admin_full), :id => 'crop_thumb'
-  - [:full_crop_x, :full_crop_y, :full_crop_w, :full_crop_h].each do |attr|
-    = form.hidden_field attr, :id => attr
+      %br
+      .div{:style => "width:#{@gallery.thumb_width}px;height:#{@gallery.thumb_height}px;overflow:hidden;margin-left:5px;"}
+        = image_tag @photo.image.url(:admin_full), :id => 'thumb_preview', :style => "max-width: none;"
   - [:thumb_crop_x, :thumb_crop_y, :thumb_crop_w, :thumb_crop_h].each do |attr|
     = form.hidden_field attr, :id => attr
   .form-actions

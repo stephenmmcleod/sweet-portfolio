@@ -40,11 +40,17 @@ class Admin::Gallery::PhotosController < Admin::Gallery::BaseController
   end
 
   def update
-    @photo.update_attributes!(params[:gallery_photo])
-    flash[:notice] = 'Photo updated'
-    redirect_to :action => :index
+    photo = params[:photo] || params[:gallery_photo]
+    @photo.update_attributes!(photo)
+    if photo[:thumb_crop_x].present? || photo[:full_crop_x].present?
+      @photo.image.reprocess!
+      flash[:notice] = 'Photo cropped'
+    else  
+      flash[:notice] = 'Photo updated'  
+    end
+    redirect_to :action => :edit  
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to updated Photo'
+    flash.now[:error] = 'Failed to update Photo'
     render :action => :edit
   end
 

@@ -25,7 +25,6 @@ class Gallery::Photo < ActiveRecord::Base
 
   # -- Callbacks ------------------------------------------------------------
   before_create :assign_position
-  after_update :reprocess_image, :if => :cropping?
 
   # -- Validations ----------------------------------------------------------
   validates :gallery_id,
@@ -38,7 +37,9 @@ class Gallery::Photo < ActiveRecord::Base
   validates_attachment_size :image,
     :less_than    => 5.megabytes
 
-  attr_accessible :gallery, :title, :description, :image, :embed_code
+  attr_accessible :gallery, :title, :description, :image, :embed_code,
+                  :thumb_crop_x, :thumb_crop_y, :thumb_crop_w, :thumb_crop_h,
+                  :full_crop_x, :full_crop_y, :full_crop_w, :full_crop_h
 
   # -- Scopes ---------------------------------------------------------------
   default_scope order('gallery_photos.position')
@@ -51,10 +52,6 @@ class Gallery::Photo < ActiveRecord::Base
 
   def force_aspect?
     self.gallery.force_ratio_full? || self.gallery.force_ratio_thumb?
-  end
-
-  def cropping?
-    cropping_thumb? || cropping_full?
   end
 
   def cropping_thumb?
@@ -74,10 +71,6 @@ private
   def assign_position
     max = self.gallery.photos.maximum(:position)
     self.position = max ? max + 1 : 0
-  end
-
-  def reprocess_image
-    image.reprocess!
   end
 
 end
