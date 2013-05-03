@@ -47,7 +47,7 @@ class Gallery::Photo < ActiveRecord::Base
   # -- Instance Methods -----------------------------------------------------
   def image_geometry(style = :original)
     @geometry ||= {}
-    @geometry[style] ||= Paperclip::Geometry.from_file(image.path(style))
+    @geometry[style] ||= Paperclip::Geometry.from_file(image.url(style))
   end
 
   def force_aspect?
