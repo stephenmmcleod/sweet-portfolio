@@ -29,6 +29,7 @@
  * }}}
  */
 
+
 (function ($) {
 
   $.Jcrop = function (obj, opt) {
