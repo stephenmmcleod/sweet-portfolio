@@ -45,9 +45,11 @@ class Gallery::Photo < ActiveRecord::Base
   default_scope order('gallery_photos.position')
 
   # -- Instance Methods -----------------------------------------------------
+
   def image_geometry(style = :original)
     @geometry ||= {}
-    @geometry[style] ||= Paperclip::Geometry.from_file(image.url(style))
+    path = (image.options[:storage]==:s3) ? image.url(style) : image.path(style)
+    @geometry[style] ||= Paperclip::Geometry.from_file(path)
   end
 
   def force_aspect?
