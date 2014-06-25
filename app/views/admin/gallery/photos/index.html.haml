@@ -8,8 +8,8 @@
     - @photos.each do |photo|
       %tr{:id => dom_id(photo)}
         %td
-          .dragger{:style => "cursor: move;"}
-            = image_tag(photo.image.url(:admin_thumb))
+          .dragger{:style => "cursor: move; width: 200px;"}
+            = image_tag(photo.image.url(:thumb))
         %td.main
           .title= photo.title
         %td

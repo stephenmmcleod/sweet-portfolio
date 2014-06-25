@@ -1,7 +1,7 @@
 = form.text_field :title
 - if @photo.image? && @photo.id.present?
   = form.element 'Current Image' do
-    = image_tag(@photo.image.url(:thumb))
+    = image_tag(@photo.image.url(:full))
     %br/
     = link_to 'Crop Image', crop_admin_gallery_gallery_photo_path(@gallery, @photo) if @photo.force_aspect?
 = form.file_field :image, :multiple => @photo.new_record?
