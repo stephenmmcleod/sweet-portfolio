@@ -6,7 +6,7 @@
     = javascript_include_tag 'sweet_portfolio/application.js'
     = stylesheet_link_tag 'sweet_portfolio/application.css'
     = yield :head
-  %body{:class => 'c_#{params[:controller].gsub('/', '_')} a_#{params[:action]}' }
+  %body{:class => "c_#{params[:controller].gsub('/', '_')} a_#{params[:action]}" }
   - flash.each do |type, message|
     %div{:class => "flash #{type}"}= message
   = yield

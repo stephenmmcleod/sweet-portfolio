@@ -1,5 +1,5 @@
 .page-header
   %h2= "New Photo"
 
-= comfy_form_for @photo, :url => {:action => :create}, :html => {:multipart => true} do |form|
+= sweet_portfolio_form_for @photo, :url => {:action => :create}, :html => {:multipart => true} do |form|
   = render form

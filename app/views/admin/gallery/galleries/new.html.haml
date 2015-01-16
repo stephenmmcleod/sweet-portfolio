@@ -1,5 +1,6 @@
 .page-header
   %h2= "New Gallery"
 
-= comfy_form_for @gallery, :as => :gallery, :url => { :action => :create } do |form|
+
+= sweet_portfolio_form_for @gallery, :as => :gallery, :url => { :action => :create } do |form|
   = render form

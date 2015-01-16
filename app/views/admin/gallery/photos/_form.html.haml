@@ -1,5 +1,5 @@
 = form.text_field :title
-- if @photo.image? && @photo.id.present?
+- if @photo.image? && @photo.id.present? && defined?(ComfortableMexicanSofa)
   = form.element 'Current Image' do
     = image_tag(@photo.image.url(:thumb))
     %br/
