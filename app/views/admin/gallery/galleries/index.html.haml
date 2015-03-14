@@ -1,10 +1,8 @@
-
-
 .page-header
-  = link_to 'Add new gallery', new_admin_gallery_gallery_path, :class => 'btn pull-right'
+  = link_to 'Add new gallery', new_admin_gallery_gallery_path, :class => 'btn btn-default pull-right'
   %h2 Galleries
 
-= render :partial => 'cms_admin/categories/index', :object => 'Gallery::Gallery' if defined?(ComfortableMexicanSofa)
+= render :partial => 'comfy/admin/cms/categories/index', :object => 'Gallery::Gallery' if defined?(ComfortableMexicanSofa)
 
 %style
   
@@ -26,6 +24,6 @@
           = link_to gallery.title, admin_gallery_gallery_photos_path(gallery)
         %td
           .btn-group
-            = link_to 'Show Photos', admin_gallery_gallery_photos_path(gallery), :class => 'btn btn-small'
-            = link_to 'Edit', edit_admin_gallery_gallery_path(gallery), :class => 'btn btn-small'
+            = link_to 'Show Photos', admin_gallery_gallery_photos_path(gallery), :class => 'btn btn-default'
+            = link_to 'Edit', edit_admin_gallery_gallery_path(gallery), :class => 'btn btn-default'
             = link_to 'Delete', admin_gallery_gallery_path(gallery), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-small btn-danger'

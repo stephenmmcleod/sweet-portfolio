@@ -10,9 +10,7 @@ class Gallery::Gallery < ActiveRecord::Base
   # -- Validations ----------------------------------------------------------
   validates :title,
     :presence => true
-  attr_accessible :title, :identifier, :description, :full_width, :full_height, :force_ratio_full, 
-                  :thumb_width, :thumb_height, :force_ratio_thumb, :short_description, :category_ids
-
+  
   validates :identifier,
     :presence   => true,
     :uniqueness => true,

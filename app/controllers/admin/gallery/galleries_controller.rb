@@ -17,7 +17,7 @@ class Admin::Gallery::GalleriesController < Admin::Gallery::BaseController
 
   def create
     @gallery.save!
-    flash[:notice] = 'Gallery created'
+    flash[:success] = 'Gallery created'
     redirect_to :action => :index
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to create Gallery'
@@ -33,8 +33,8 @@ class Admin::Gallery::GalleriesController < Admin::Gallery::BaseController
   end
 
   def update
-    @gallery.update_attributes!(params[:gallery])
-    flash[:notice] = 'Gallery updated'
+    @gallery.update_attributes!(gallery_params)
+    flash[:success] = 'Gallery updated'
     redirect_to :action => :index
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to update Gallery'
@@ -43,7 +43,7 @@ class Admin::Gallery::GalleriesController < Admin::Gallery::BaseController
 
   def destroy
     @gallery.destroy
-    flash[:notice] = 'Gallery deleted'
+    flash[:success] = 'Gallery deleted'
     redirect_to :action => :index
   end
 
@@ -66,7 +66,14 @@ protected
   end
 
   def build_gallery
+    # raise params.to_yaml
     @gallery = Gallery::Gallery.new(params[:gallery])
+  end
+
+  def gallery_params
+    params.require(:gallery).permit(:title, :identifier, :description, :short_description, 
+        :starts_on, :ends_on, :opening, :event_link, :full_width, :full_height, :force_ratio_full, 
+        :thumb_width, :thumb_height, :force_ratio_thumb, :category_ids, :is_published)
   end
 
 end

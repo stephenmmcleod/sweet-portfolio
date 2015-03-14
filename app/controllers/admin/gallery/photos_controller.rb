@@ -13,6 +13,7 @@ class Admin::Gallery::PhotosController < Admin::Gallery::BaseController
   end
 
   def create
+    
     file_array  = params[:gallery_photo][:image] || [nil]
 
     file_array.each_with_index do |file, i|
@@ -23,12 +24,12 @@ class Admin::Gallery::PhotosController < Admin::Gallery::BaseController
         file_params[:title]
       )
       title = title + " #{i + 1}" if file_params[:title] == title && file_array.size > 1
-
-      @photo = Gallery::Photo.new({:gallery => @gallery}.merge(file_params.merge(:title => title) || {}))
+      params = {:gallery => @gallery}.merge(file_params.merge(:title => title) || {})
+      @photo = Gallery::Photo.new(params)
       @photo.save!
     end
 
-    flash[:notice] = 'Photo created'
+    flash[:success] = 'Photo created'
     redirect_to :action => :index
   rescue ActiveRecord::RecordInvalid
     flash[:error] = 'Failed to create Photo'
@@ -41,12 +42,12 @@ class Admin::Gallery::PhotosController < Admin::Gallery::BaseController
 
   def update
     photo = params[:photo] || params[:gallery_photo]
-    @photo.update_attributes!(photo)
+    @photo.update_attributes!(photo_params)
     if photo[:thumb_crop_x].present? || photo[:full_crop_x].present?
       @photo.image.reprocess!
-      flash[:notice] = 'Photo cropped'
+      flash[:success] = 'Photo cropped'
     else  
-      flash[:notice] = 'Photo updated'  
+      flash[:success] = 'Photo updated'  
     end
     redirect_to :action => :edit  
   rescue ActiveRecord::RecordInvalid
@@ -56,7 +57,7 @@ class Admin::Gallery::PhotosController < Admin::Gallery::BaseController
 
   def destroy
     @photo.destroy
-    flash[:notice] = 'Photo deleted'
+    flash[:success] = 'Photo deleted'
     redirect_to :action => :index
   end
 
@@ -90,7 +91,15 @@ protected
   end
 
   def build_photo
-    @photo = Gallery::Photo.new({:gallery => @gallery}.merge(params[:sofa_gallery_photo] || {}))
+    @photo = Gallery::Photo.new(params[:sofa_gallery_photo] || {})
   end
+
+  def photo_params
+    params.require(:gallery_photo).permit(:gallery, :title, :description, :image, :embed_code,
+      :thumb_crop_x, :thumb_crop_y, :thumb_crop_w, :thumb_crop_h,
+      :full_crop_x, :full_crop_y, :full_crop_w, :full_crop_h)
+  end
+
+
 
 end

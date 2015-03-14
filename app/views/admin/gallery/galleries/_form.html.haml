@@ -13,3 +13,4 @@
 
 .form-actions
   = form.submit @gallery.new_record?? 'Create post' : 'Update post', :class => 'btn btn-primary'
+  = link_to "Cancel", admin_gallery_galleries_path(params[:gallery_id]), :class => "btn btn-link"

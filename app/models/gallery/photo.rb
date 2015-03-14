@@ -37,12 +37,8 @@ class Gallery::Photo < ActiveRecord::Base
   validates_attachment_size :image,
     :less_than    => 5.megabytes
 
-  attr_accessible :gallery, :title, :description, :image, :embed_code,
-                  :thumb_crop_x, :thumb_crop_y, :thumb_crop_w, :thumb_crop_h,
-                  :full_crop_x, :full_crop_y, :full_crop_w, :full_crop_h
-
   # -- Scopes ---------------------------------------------------------------
-  default_scope order('gallery_photos.position')
+  default_scope { order(:position) }
 
   # -- Instance Methods -----------------------------------------------------
 
