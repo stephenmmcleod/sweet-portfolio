@@ -66,7 +66,6 @@ protected
   end
 
   def build_gallery
-    # raise params.to_yaml
     @gallery = Gallery::Gallery.new(params[:gallery])
   end
 
